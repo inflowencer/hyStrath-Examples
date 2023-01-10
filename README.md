@@ -5,35 +5,51 @@
 ![](img/shuttle.png)
 
 
-### Install hyStrath
+## 1. Install hyStrath
 
+* Windows, Linux & MacOS: [https://github.com/inflowencer/hyStrath-Docker](https://github.com/inflowencer/hyStrath-Docker) (recommended)
 * Ubuntu-22.04: [https://github.com/hystrath/hyStrath](https://github.com/hystrath/hyStrath)
-* Windows, Linux & MacOS: [https://github.com/inflowencer/hyStrath-Docker](https://github.com/inflowencer/hyStrath-Docker)
 
 
-### Get the Example Collection
+## 2. Get the Example Collection and Run a Test Case
 
-```sh
-git clone https://github.com/inflowencer/hyStrath-Examples.git ~/hyStrath-Examples
-```
+After successful installation, you can download the example repository and run the *Mach 20 cylinder* test case.
 
-### Run the Mach 20 Cylinder Test Case
+### Docker
 
-1. With **docker**, run/mount the container and copy the test case into it
+1. Clone the repo to the host (into your Windows, Linux or MacOS machine)
+   ```sh
+   git clone https://github.com/inflowencer/hyStrath-Examples.git ~/hyStrath-Examples
+   ```
+2. Launch the docker image and copy an example from the host repo to the container:
    ```sh
    docker run hystrath -v /mnt/docker 
    cp -r ~/hyStrath-Examples/examples/viking_mars /mnt/docker/.
    ```
-   With **Ubuntu**, create a new directory and copy the test case from the repo inside it
+
+3. Run the simulation
    ```sh
-   mkdir -p ~/hyStrath-Tests
-   cp -r ~/hyStrath-Examples/examples/viking_mars ~/hyStrath-Tests/.
+   cd hyStrath-Tests/viking_mars && ./Allrun 8  # Run with 8 cores
    ```
+
+### Ubuntu-22.04
+
+```sh
+# Clone the examples
+git clone https://github.com/inflowencer/hyStrath-Examples.git ~/hyStrath-Examples
+
+# Launch docker
+mkdir -p ~/hyStrath-Tests
+
+# Copy and run an example
+cp -r ~/hyStrath-Examples/examples/viking_mars ~/hyStrath-Tests/.
+cd hyStrath-Tests/viking_mars
+./Allrun 8  # Run with 8 cores
+```
+
 
 2. Change into the `viking_mars/` dir and run the case with your desired number of cores `np`
    ```sh
-   cd hyStrath-Tests/viking_mars
-   ./Allrun 8  # Run with 8 cores
    ```
 
 3. Postprocess the case 
@@ -43,17 +59,29 @@ git clone https://github.com/inflowencer/hyStrath-Examples.git ~/hyStrath-Exampl
 
 ### CFD
 
-#### [Viking-I Mars reentry](examples/dsmc/70deg_blunted_cone/)
+#### [Viking-I Mars reentry](examples/cfd/mach_20_cylinder/)
 
 IMAGE PLACEHOLDER
 
+Reentry of the [ Viking-I capsule ](https://en.wikipedia.org/wiki/Viking_1) into Mars atmosphere.
+
+| Property | Value |
+| -------- | -----:|
+| Altitude | 30 km |
+| Velocity | 3750 m/s |
+| Temperature | 150 K |
+| Pressure | 10 Pa |
+| Density | 1e-3 kg/m3 |
+| Kn | 0.002 |
+
+#### [Mach 20 Cylinder](examples/cfd/70deg_blunted_cone/)
+
+
 *Short description*
 
-#### [Mach 20 Cylinder](examples/dsmc/70deg_blunted_cone/)
+#### [Generic Case](examples/cfd/../genericCase/)
 
-IMAGE PLACEHOLDER
-
-*Short description*
+Generic case for setting up reacting and non-reacting `hy2Foam` cases.
 
 ### DSMC
 

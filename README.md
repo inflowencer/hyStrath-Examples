@@ -59,6 +59,8 @@ cd hyStrath-Tests/viking_mars
 
 ### CFD
 
+---
+
 #### [Viking-I Mars reentry](examples/cfd/mach_20_cylinder/)
 
 IMAGE PLACEHOLDER
@@ -73,9 +75,13 @@ Reentry of the [ Viking-I capsule ](https://en.wikipedia.org/wiki/Viking_1) into
 | Pressure | 10 Pa |
 | Density | 1e-3 kg/m3 |
 | Kn | 0.002 |
+| Composition | 97% CO2, 3% N2 |
+
+---
 
 #### [Mach 20 Cylinder](examples/cfd/70deg_blunted_cone/)
 
+IMAGE PLACEHOLDER
 
 *Short description*
 
